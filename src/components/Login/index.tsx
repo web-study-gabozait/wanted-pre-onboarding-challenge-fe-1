@@ -1,4 +1,7 @@
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import { ACCESS_TOKEN_KEY } from "../../constants/token/token.constant";
+import token from "../../lib/token";
 import { usePostLoginMutation } from "../../quries/auth/auth.query";
 import { postLoginParam } from "../../repositories/auth/AuthRepository.param";
 
@@ -9,6 +12,8 @@ const Login = () => {
     formState: { isValid },
   } = useForm<postLoginParam>();
 
+  const navigate = useNavigate();
+
   const postLoginMutation = usePostLoginMutation();
 
   return (
@@ -16,7 +21,16 @@ const Login = () => {
       onSubmit={handleSubmit(({ email, password }) =>
         postLoginMutation.mutateAsync(
           { email, password },
-          { onSuccess: () => {}, onError: () => {} }
+          {
+            onSuccess: ({ message, token: accessToken }) => {
+              window.alert(message);
+              token.setToken(ACCESS_TOKEN_KEY, accessToken);
+              navigate("/");
+            },
+            onError: (error: any) => {
+              window.alert(error.response.data.details);
+            },
+          }
         )
       )}
     >
@@ -38,6 +52,7 @@ const Login = () => {
             message: "8자리 이상 비밀번호를 사용하세요.",
           },
         })}
+        type="password"
         placeholder="비밀번호를 입력해주세요"
       />
       <input type="submit" value="로그인" disabled={!isValid} />

@@ -7,6 +7,7 @@ import { postLoginParam } from "../../repositories/auth/AuthRepository.param";
 import {
   LoginContainer,
   LoginForm,
+  LoginGuideText,
   LoginSubmitButton,
   LoginTextInput,
 } from "./style";
@@ -69,6 +70,10 @@ const Login = () => {
           isDisable={!isValid}
         />
       </LoginForm>
+      <LoginGuideText>
+        아이디가 존재하지 않으신가요?{" "}
+        <strong onClick={() => navigate("/signup")}>회원가입</strong>
+      </LoginGuideText>
     </LoginContainer>
   );
 };

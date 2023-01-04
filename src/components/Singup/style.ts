@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 import { palette } from "../../styles/palette";
 
-export const LoginContainer = styled.div`
+export const SignupContainer = styled.div`
   width: 100%;
   height: 100vh;
   display: flex;
@@ -10,13 +10,13 @@ export const LoginContainer = styled.div`
   justify-content: center;
 `;
 
-export const LoginForm = styled.form`
+export const SignupForm = styled.form`
   display: flex;
   flex-direction: column;
   row-gap: 10px;
 `;
 
-export const LoginTextInput = styled.input`
+export const SignupTextInput = styled.input`
   width: 380px;
   height: 56px;
   border-radius: 8px;
@@ -31,7 +31,7 @@ export const LoginTextInput = styled.input`
   }
 `;
 
-export const LoginSubmitButton = styled.input<{ isDisable: boolean }>`
+export const SignupSubmitButton = styled.input<{ isDisable: boolean }>`
   width: 380px;
   height: 56px;
   border-radius: 8px;
@@ -49,7 +49,7 @@ export const LoginSubmitButton = styled.input<{ isDisable: boolean }>`
     `}
 `;
 
-export const LoginGuideText = styled.p`
+export const SingupGuideText = styled.p`
   color: ${palette.gray[300]};
   font-size: 16px;
   margin-top: 20px;

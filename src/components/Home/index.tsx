@@ -12,6 +12,7 @@ import HomTodoItem from "./HomeTodoItem";
 import usePostTodo from "../../hooks/todo/usePostTodo";
 import { useLocation } from "react-router-dom";
 import HomeTodoDetailModal from "./HomeTodoDetailModal";
+import LogoutButton from "../Common/LogoutButton";
 
 const Home = () => {
   const { pathname } = useLocation();
@@ -22,6 +23,7 @@ const Home = () => {
 
   return (
     <HomeContainer>
+      <LogoutButton />
       <HomeWrap>
         <HomeInputForm onSubmit={onSubmitTodo}>
           <HomeInputWrap>

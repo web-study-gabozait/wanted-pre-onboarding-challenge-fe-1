@@ -1,4 +1,4 @@
-import { useGetTodosQuery } from "../../quries/todo/todo.query";
+import { useGetTodosQuery } from "../../queries/todo/todo.query";
 import TextInput from "../Common/TextInput";
 import {
   HomeContainer,

@@ -1,5 +1,5 @@
 import { useQueryClient } from "react-query";
-import { useDeleteTodoMutation } from "../../quries/todo/todo.query";
+import { useDeleteTodoMutation } from "../../queries/todo/todo.query";
 
 interface Props {
   todoId: string;

@@ -1,6 +1,6 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import { useQueryClient } from "react-query";
-import { usePostTodoMutation } from "../../quries/todo/todo.query";
+import { usePostTodoMutation } from "../../queries/todo/todo.query";
 
 const usePostTodo = () => {
   const queryClient = useQueryClient();

@@ -7,7 +7,7 @@ import {
   useState,
 } from "react";
 import { useQueryClient } from "react-query";
-import { usePutTodoMutation } from "../../quries/todo/todo.query";
+import { usePutTodoMutation } from "../../queries/todo/todo.query";
 
 interface Props {
   title: string | undefined;

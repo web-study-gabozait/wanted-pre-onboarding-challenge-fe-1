@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import TimeCounting from "time-counting";
 import useModifyTodo from "../../../hooks/todo/useModifyTodo";
-import { useGetTodoQuery } from "../../../quries/todo/todo.query";
+import { useGetTodoQuery } from "../../../queries/todo/todo.query";
 import TextInput from "../../Common/TextInput";
 import {
   HomeTodoDetailModalBottomWrap,

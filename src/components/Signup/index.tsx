@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { ACCESS_TOKEN_KEY } from "../../constants/token/token.constant";
 import token from "../../lib/token";
-import { usePostSignupMutation } from "../../quries/auth/auth.query";
+import { usePostSignupMutation } from "../../queries/auth/auth.query";
 import { postSignupParam } from "../../repositories/auth/AuthRepository.param";
 import {
   SignupContainer,

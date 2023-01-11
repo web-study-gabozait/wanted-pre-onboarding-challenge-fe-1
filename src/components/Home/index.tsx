@@ -5,21 +5,19 @@ import {
   HomeInputSubmitButton,
   HomeInputForm,
   HomeWrap,
-  HomeTodoItemListWrap,
   HomeInputWrap,
 } from "./style";
-import HomTodoItem from "./HomeTodoItem";
 import usePostTodo from "../../hooks/todo/usePostTodo";
 import { useLocation } from "react-router-dom";
 import HomeTodoDetailModal from "./HomeTodoDetailModal";
 import LogoutButton from "../Common/LogoutButton";
+import { Suspense } from "react";
+import HomeTodoList from "./HomeTodoList";
 
 const Home = () => {
   const { pathname } = useLocation();
 
   const { todoData, onChangeText, onSubmitTodo } = usePostTodo();
-
-  const { data: serverTodosData } = useGetTodosQuery();
 
   return (
     <HomeContainer>
@@ -47,11 +45,9 @@ const Home = () => {
             제출
           </HomeInputSubmitButton>
         </HomeInputForm>
-        <HomeTodoItemListWrap>
-          {serverTodosData?.data.map((todo) => (
-            <HomTodoItem data={todo} key={todo.id} />
-          ))}
-        </HomeTodoItemListWrap>
+        <Suspense fallback={<>로딩중...</>}>
+          <HomeTodoList />
+        </Suspense>
       </HomeWrap>
       {pathname.split("/")[2] && (
         <HomeTodoDetailModal todoId={pathname.split("/")[2]} />

@@ -1,4 +1,5 @@
-import { useMutation, useQuery } from "react-query";
+import { AxiosError } from "axios";
+import { useMutation, useQuery, UseQueryOptions } from "react-query";
 import TodoRepository from "../../repositories/todo/TodoRepository";
 import {
   deleteTodoByIdParam,
@@ -6,18 +7,36 @@ import {
   postTodoParam,
   putTodoByIdParam,
 } from "../../repositories/todo/TodoRepository.param";
+import { TodoResponse, TodosResponse } from "../../types/todo/todo.type";
 
-export const useGetTodosQuery = () =>
+export const useGetTodosQuery = (
+  options?: UseQueryOptions<
+    TodosResponse,
+    AxiosError,
+    TodosResponse,
+    "todo/useGetTodosQuery"
+  >
+) =>
   useQuery("todo/useGetTodosQuery", () => TodoRepository.getTodos(), {
+    ...options,
     cacheTime: 1000 * 60 * 5,
     staleTime: 1000 * 60,
   });
 
-export const useGetTodoQuery = ({ id }: getTodoByIdParam) =>
+export const useGetTodoQuery = (
+  { id }: getTodoByIdParam,
+  options?: UseQueryOptions<
+    TodoResponse,
+    AxiosError,
+    TodoResponse,
+    ["todo/useGetTodoQuery", string]
+  >
+) =>
   useQuery(
     ["todo/useGetTodoQuery", id],
     () => TodoRepository.getTodoById({ id }),
     {
+      ...options,
       cacheTime: 1000 * 60 * 5,
       staleTime: 1000 * 60,
     }

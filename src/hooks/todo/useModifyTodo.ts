@@ -42,15 +42,15 @@ const useModifyTodo = ({ title, content, id, setIsModify }: Props) => {
       return;
     }
 
+    if (todoData.title === "" || todoData.content === "") {
+      window.alert("내용을 입력해주세요.");
+      return;
+    }
+
     if (
       Object.entries({ title, content }).toString() ===
       Object.entries(todoData).toString()
     ) {
-      return;
-    }
-
-    if (todoData.title === "" || todoData.content === "") {
-      window.alert("내용을 입력해주세요.");
       return;
     }
 

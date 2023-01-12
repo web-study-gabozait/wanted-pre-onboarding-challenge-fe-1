@@ -1,4 +1,3 @@
-import { useGetTodosQuery } from "../../queries/todo/todo.query";
 import TextInput from "../Common/TextInput";
 import {
   HomeContainer,
@@ -13,6 +12,8 @@ import HomeTodoDetailModal from "./HomeTodoDetailModal";
 import LogoutButton from "../Common/LogoutButton";
 import { Suspense } from "react";
 import HomeTodoList from "./HomeTodoList";
+import ErrorBoundary from "../Common/ErrorBoundary";
+import { TodosFallbackLoader } from "../Common/Loader";
 
 const Home = () => {
   const { pathname } = useLocation();
@@ -45,9 +46,11 @@ const Home = () => {
             제출
           </HomeInputSubmitButton>
         </HomeInputForm>
-        <Suspense fallback={<>로딩중...</>}>
-          <HomeTodoList />
-        </Suspense>
+        <ErrorBoundary fallback={<>에러 발생</>}>
+          <Suspense fallback={<TodosFallbackLoader />}>
+            <HomeTodoList />
+          </Suspense>
+        </ErrorBoundary>
       </HomeWrap>
       {pathname.split("/")[2] && (
         <HomeTodoDetailModal todoId={pathname.split("/")[2]} />

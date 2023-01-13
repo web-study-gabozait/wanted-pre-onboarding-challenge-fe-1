@@ -1,15 +1,30 @@
-import { LoaderTodoItem, LoaderTodoList } from "./style";
-
-export const SkeletonTodo = () => <LoaderTodoItem />;
+import {
+  LoaderTodoItem,
+  LoaderTodoList,
+  LoaderTodoModalContent,
+  LoaderTodoModalCreatedAt,
+  LoaderTodoModalTitle,
+  LoaderTodoModalWrap,
+} from "./style";
 
 export const TodosFallbackLoader = () => (
   <LoaderTodoList>
-    <SkeletonTodo />
-    <SkeletonTodo />
-    <SkeletonTodo />
-    <SkeletonTodo />
-    <SkeletonTodo />
-    <SkeletonTodo />
-    <SkeletonTodo />
+    <LoaderTodoItem />
+    <LoaderTodoItem />
+    <LoaderTodoItem />
+    <LoaderTodoItem />
+    <LoaderTodoItem />
+    <LoaderTodoItem />
+    <LoaderTodoItem />
   </LoaderTodoList>
+);
+
+export const TodoModalFallbackLoader = () => (
+  <LoaderTodoModalWrap>
+    <LoaderTodoModalTitle />
+    <LoaderTodoModalContent />
+    <LoaderTodoModalContent />
+    <LoaderTodoModalContent />
+    <LoaderTodoModalCreatedAt />
+  </LoaderTodoModalWrap>
 );

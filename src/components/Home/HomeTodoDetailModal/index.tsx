@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import { useNavigate } from "react-router-dom";
 import ErrorBoundary from "../../Common/ErrorBoundary";
+import { TodoModalFallbackLoader } from "../../Common/Loader";
 import HomeTodoDetailModalForm from "./HomeTodoDetailModalForm";
 import {
   HomeTodoDetailModalContainer,
@@ -19,7 +20,7 @@ const HomeTodoDetailModal = ({ todoId }: Props) => {
       <HomeTodoDetailModalOverlay onClick={() => navigate("/")} />
       <HomeTodoDetailModalContainer>
         <ErrorBoundary fallback={<>에러 발생</>}>
-          <Suspense fallback={<>로딩중...</>}>
+          <Suspense fallback={<TodoModalFallbackLoader />}>
             <HomeTodoDetailModalForm todoId={todoId} />
           </Suspense>
         </ErrorBoundary>

@@ -40,7 +40,7 @@ const Home = () => {
             />
           </HomeInputWrap>
           <HomeInputSubmitButton
-            disabled={todoData.content === "" || todoData.title === ""}
+            // disabled={todoData.content === "" || todoData.title === ""}
             isDisable={todoData.content === "" || todoData.title === ""}
           >
             제출

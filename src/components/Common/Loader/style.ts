@@ -50,6 +50,7 @@ export const LoaderTodoModalCreatedAt = styled.div`
 `;
 
 export const LoaderTodoModalWrap = styled.div`
+  min-height: 190px;
   display: flex;
   flex-direction: column;
 `;

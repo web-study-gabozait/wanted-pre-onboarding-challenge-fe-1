@@ -11,6 +11,7 @@ export const HomeTodoDetailModalOverlay = styled.div`
 
 export const HomeTodoDetailModalContainer = styled.div`
   width: 400px;
+  height: auto;
   min-height: 270px;
   border-radius: 20px;
   background-color: white;
@@ -18,7 +19,7 @@ export const HomeTodoDetailModalContainer = styled.div`
   box-sizing: border-box;
   z-index: 2;
   position: absolute;
-  top: 30%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   display: flex;

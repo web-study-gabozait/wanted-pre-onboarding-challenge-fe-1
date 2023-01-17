@@ -1,3 +1,4 @@
+import { AxiosError } from "axios";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { ACCESS_TOKEN_KEY } from "../../constants/token/token.constant";
@@ -36,7 +37,9 @@ const Signup = () => {
                 navigate("/");
               },
               onError: (error: any) => {
-                window.alert(error.response.data.details);
+                if (error instanceof AxiosError) {
+                  window.alert(error.response!.data.details);
+                }
               },
             }
           )

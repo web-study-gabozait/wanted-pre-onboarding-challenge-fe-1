@@ -8,6 +8,7 @@ import {
 } from "react";
 import { useQueryClient } from "react-query";
 import { usePutTodoMutation } from "../../queries/todo/todo.query";
+import useValidation from "../util/useValidation";
 
 interface Props {
   title: string | undefined;
@@ -22,6 +23,8 @@ const useModifyTodo = ({ title, content, id, setIsModify }: Props) => {
   const [todoData, setTodoData] = useState({ title: "", content: "" });
 
   const putTodoMutation = usePutTodoMutation();
+
+  const { validator, getValidateResult } = useValidation();
 
   useEffect(() => {
     if (title && content) {
@@ -38,19 +41,20 @@ const useModifyTodo = ({ title, content, id, setIsModify }: Props) => {
   const onModifyTodo = async (e: FormEvent) => {
     e.preventDefault();
 
-    if (putTodoMutation.isLoading) {
-      return;
-    }
-
-    if (todoData.title === "" || todoData.content === "") {
-      window.alert("내용을 입력해주세요.");
-      return;
-    }
-
-    if (
+    validator([
+      putTodoMutation.isLoading,
+      todoData.title === "" || todoData.content === "",
       Object.entries({ title, content }).toString() ===
-      Object.entries(todoData).toString()
-    ) {
+        Object.entries(todoData).toString(),
+    ]);
+
+    const { isValid, breakIdx } = getValidateResult();
+
+    if (!isValid) {
+      if (breakIdx === 1) {
+        window.alert("내용을 입력해주세요.");
+      }
+
       return;
     }
 
